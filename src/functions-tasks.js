@@ -74,7 +74,7 @@ function getArgumentsCount(funcs) {
  *
  */
 function getPowerFunction(exponent) {
-  return function (x) {
+  return function power(x) {
     return x ** exponent;
   };
 }
@@ -92,7 +92,7 @@ function getPowerFunction(exponent) {
  *   getPolynom(8)     => y = 8
  *   getPolynom()      => null
  */
-function getPolynom() {
+function getPolynom(...rest) {
   return (x) => {
     const res = rest.reduce((acc, arg, index) => {
       return acc + arg * x ** (rest.length - 1 - index);
@@ -118,7 +118,7 @@ function getPolynom() {
 function memoize(func) {
   let cache;
   let computed = false;
-  return function (...args) {
+  return function memoized(...args) {
     if (!computed) {
       cache = func(...args);
       computed = true;
